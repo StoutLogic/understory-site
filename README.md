@@ -3,7 +3,7 @@ A boilerplate package for a WordPress site using Understory
 
 ## Create Project
 ```
-composer create-project stoutlogic/understory-site
+composer create-project stoutlogic/understory-site .
 ```
 
 ## Optional Setup
