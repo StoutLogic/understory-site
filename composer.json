@@ -1,0 +1,32 @@
+{
+    "name": "stoutlogic/understory-site",
+    "description": "A WordPress site using Understory",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Steve Pfisterer",
+            "email": "steve@stoutlogic.com"
+        }
+    ],
+    "require": {
+        "johnpbloch/wordpress": "~4.3",
+        "stoutlogic/understory": "dev-master"
+    },
+    "config": {
+        "vendor-dir": "wp-content/vendor"
+    },
+    "extra": {
+        "installer-paths": {
+            "wp-content/mu-plugins/{$name}/": ["type:wordpress-plugin"]
+        },
+        "wordpress-install-dir": "wp"
+    },
+    "scripts": {
+        "pre-install-cmd" : "@init-wp-content",
+        "post-autoload-dump" : "@init-understory",
+        "init-wp-content": "mkdir -p wp-content/themes;mkdir -p wp-content/plugins;mkdir -p wp-content/mu-plugins",
+        "init-understory" : "@copy-understory-mu-plugins-loader",
+        "copy-understory-mu-plugins-loader": "cp wp-content/mu-plugins/understory/load-mu-plugins.php wp-content/mu-plugins",
+        "install-wp-deploy" : "rm -rf wp-cli-deploy; git clone https://github.com/c10b10/wp-cli-deploy.git; touch wp-cli.yml; echo 'require: \"wp-cli-deploy/deploy.php\"\nurl: \"http://website.dev\"\n' >> wp-cli.yml"
+    }
+}
