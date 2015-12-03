@@ -11,6 +11,7 @@
     "require": {
         "johnpbloch/wordpress": "~4.3",
         "stoutlogic/understory": "dev-master"
+        "stoutlogic/understory-theme": "dev-master"
     },
     "config": {
         "vendor-dir": "wp-content/vendor"
